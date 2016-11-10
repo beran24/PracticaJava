@@ -1,39 +1,42 @@
-package practicajavabanc;
-public abstract class Client implements Comparable<Client>{
+/**
+ /**
+ * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
+ */
+public abstract class Client implements Comparable<Client>  {
 
     protected String nom;
     protected String adreça;
-    protected int password;
     protected int edat;
+    protected int password;
 
-    public Client(String nom, int password) {
+    public Client(String nom, int edat, int password) {
         this.nom = nom;
+        this.edat = edat;
         this.password = password;
     }
-    public int getEdat() {
-        return edat;
-    }
-    public void setEdat(int edat) {
-        this.edat = edat;
-    }
+
     public String getNom() {
         return nom;
     }
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+
     public String getAdreça() {
         return adreça;
     }
+
     public void setAdreça(String adreça) {
         this.adreça = adreça;
     }
+
+    public int getEdat() {
+        return edat;
+    }
+
     public int getPassword() {
         return password;
     }
-    public void setPassword(int password) {
-        this.password = password;
-    }
+
+
+
     public void canviPassword(int password, int passwordNou){
         if(password == this.password) {
             this.password = passwordNou;
@@ -41,15 +44,21 @@ public abstract class Client implements Comparable<Client>{
             System.out.println("T'has equivocat de password.");
         }
     }
+
     @Override
     public String toString() {
-        return "Client{" +
+        return "Client: " +
                 "nom='" + nom + '\'' +
                 ", adreça='" + adreça + '\'' +
-                '}';
+                ", edat='" + edat + '\'' +
+                ' ';
     }
+
     @Override
     public int compareTo(Client o) {
         return nom.compareTo(o.nom);
     }
+
+
+
 }
