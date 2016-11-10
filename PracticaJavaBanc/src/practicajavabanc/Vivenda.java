@@ -10,9 +10,10 @@ public class Vivenda extends CompteBancari {
     protected int tipusInteres;
     protected Date dataCaducitat;
 
-    public Vivenda(String iban, double saldo, Client propietari, Date dataCaducitat) {
+    public Vivenda(String iban, double saldo, Client propietari) {
         super(iban, saldo, propietari);
-        this.dataCaducitat = dataCaducitat;
+        this.dataCaducitat = new Date();
+        dataCaducitat=new Date(this.dataCaducitat.getTime()+ 92275200*1000);
     }
 
     public int getTipusInteres() {
