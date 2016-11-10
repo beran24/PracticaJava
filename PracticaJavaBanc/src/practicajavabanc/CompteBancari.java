@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicajavabanc;
 
 /**
  *
  * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
  */
-public abstract class CompteBancari {
+public abstract class CompteBancari implements CompteAccions {
     protected String iban;
     protected double saldo;
     protected Client propietari;
@@ -21,9 +20,12 @@ public abstract class CompteBancari {
     public void setIban(String iban) {
         this.iban = iban;
     }
+
+    @Override
     public double getSaldo() {
         return saldo;
     }
+
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
@@ -39,12 +41,12 @@ public abstract class CompteBancari {
         this.saldo = saldo;
         this.propietari = propietari;
     }
-    public double consultarSaldo(){
-        return saldo;
-    }
+
     public boolean compteDescobert(double importe){
         return(saldo-importe<0);
     }
+
+    @Override
     public void ingressarDiners(double importe){
         saldo=saldo+importe;  
     }
