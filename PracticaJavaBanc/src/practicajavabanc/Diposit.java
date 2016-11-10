@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicajavabanc;
 
 import java.util.Date;
 
@@ -11,7 +10,7 @@ import java.util.Date;
  *
  * @author Sandra
  */
-public class Diposit extends CompteBancari {
+public class Diposit extends CompteBancari implements TreureDinersAccions {
     protected int tipusInteres=1;
     public double minDiners=10000.00;
     protected Date dataAvui;
@@ -26,6 +25,16 @@ public class Diposit extends CompteBancari {
         saldo=saldo+((saldo*tipusInteres/100)*(dataAvui.getTime()-dataUltimaVerificacio.getTime())/60000);
         System.out.println("Els interesos desde la ultima verificació son: "+(saldo*tipusInteres/100)+(dataAvui.getTime()-dataUltimaVerificacio.getTime())/60000);
         this.dataUltimaVerificacio=new Date();
+    }
+
+    @Override
+    public boolean treureDiners(double importe){
+        if(saldo-importe>0){
+            saldo=saldo-importe;
+            return true;
+        }
+        else return false;
+
     }
     
     
