@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package practicajavabanc;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,58 +18,48 @@ public class PracticaJavaBanc {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*String nom;
-        int pass;
-        String nif;
-        ArrayList<Client> clients= new ArrayList<>();
-        Scanner lectura=new Scanner(System.in);
-        int nResposta=1;      
-        while(nResposta!=99){
-            nResposta= lectura.nextInt();
-            switch(nResposta){
-                case 1:
-                    System.out.println("Crea un client.Digues nom");
-                    nom=lectura.next();
-                    System.out.println("Posa el nif");
-                    nif=lectura.next();
-                    System.out.println("Posa una password");
-                    pass=lectura.nextInt();
-                    clients.add(new Particular(nom,pass,nif));
-                case 2:
-            }
-        }*/
+        
         int opcio;
+        int opcio2;
 
-        System.out.println("Benvinguda al Portal JavaBank\n\nEscull una opció:\n1.- Crear client\n2.- Entrar a l'aplicació");
-        Scanner scan = new Scanner(System.in);
-
-        while (1==1) {
-
+        while (true) {
+            System.out.println("Benvinguda al Portal JavaBank\n\nEscull una opció:\n1.- Crear client\n2.- Entrar a l'aplicació");
+            Scanner scan = new Scanner(System.in);
             opcio = scan.nextInt();
 
             switch (opcio) {
                 case 1:
-                    //crearClient();
-                    System.out.println("A");
+                    BancUtil.crearClient();
+                    System.out.println("Chivato creacio");
                     break;
                 case 2:
-                    //entrarApp();
-                    if(true){
-                        System.out.println("Escull la operació que vulguis fer: " +
-                                "\n1.- Traspàs")
-                        ;
-                        opcio = scan.nextInt();
-                        switch (opcio){
-                            case 1:
-
-                                break;
-
-
+                    if(BancUtil.entrarApp()){
+                        System.out.println("Escull la operació que vulguis fer: " +"\n1.- Traspàs\n2.- Crear compte\n9.- Enrere");
+                        opcio2 = scan.nextInt();
+                        while(opcio2!=9){
+                            switch (opcio2){
+                                case 1:
+                                    System.out.println("Traspas");
+                                    break;
+                                case 2:
+                                    BancUtil.crearCompte();
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    break;   
+                                case 6:
+                                    break;
+                                case 9:
+                                    opcio2=9;
+                                    break;
+                            }
                         }
 
                     }else{
-                        System.out.println("Les dades introduïdes són incorrectes. Torna a introduir una opció:" +
-                        "\n1.- Crear client\n2.- Entrar a l'aplicació");
+                        System.out.println("Les dades introduïdes són incorrectes.");
                         break;
                     }
 
@@ -79,7 +70,6 @@ public class PracticaJavaBanc {
 
             }
         }
-
 
 
     }
