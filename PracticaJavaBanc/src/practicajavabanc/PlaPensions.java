@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicajavabanc;
 
 import java.util.Date;
 
@@ -22,9 +21,10 @@ public class PlaPensions extends CompteBancari {
     public void ingressarDiners(double importe){
         saldo=saldo+(importe*tipusInteres/100);
     }
-    public boolean treureDiners(PlaPensions compte,double importe){
-        if(compte.saldo-importe>0){
-            compte.saldo=compte.saldo-importe;
+    
+    public boolean treureDiners(double importe){
+        if((saldo-importe>0)&&(propietari.edat > 65)){
+            saldo=saldo-importe;
             return true;
         }
         else return false;
