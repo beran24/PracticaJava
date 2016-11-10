@@ -21,10 +21,10 @@ public class Diposit extends CompteBancari {
         super(iban, saldo, propietari);
         this.dataUltimaVerificacio=new Date();
     }
-    public void comprovarInteressos(Diposit compte,Date dataAvui){
+    public void comprovarInteressos(Date dataAvui){
         this.dataAvui=new Date();
-        compte.saldo=compte.saldo+(compte.saldo*tipusInteres/100)+(dataAvui.getTime()-dataUltimaVerificacio.getTime())/60000;
-        System.out.println("Els interesos desde la ultima verificació son: "+(compte.saldo*tipusInteres/100)+(dataAvui.getTime()-dataUltimaVerificacio.getTime())/60000);
+        saldo=saldo+((saldo*tipusInteres/100)*(dataAvui.getTime()-dataUltimaVerificacio.getTime())/60000);
+        System.out.println("Els interesos desde la ultima verificació son: "+(saldo*tipusInteres/100)+(dataAvui.getTime()-dataUltimaVerificacio.getTime())/60000);
         this.dataUltimaVerificacio=new Date();
     }
     

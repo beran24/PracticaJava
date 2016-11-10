@@ -5,15 +5,13 @@ package practicajavabanc;
 import java.util.Date;
 
 public class Targeta {
-    private double numeroTarjeta;
-    private Date dataCaducitat;
-    private int cvc;
-    private int pin;
+    protected double numeroTarjeta;
+    protected Date dataCaducitat;
+    protected int cvc;
+    protected int pin;
+    protected CompteBancari compte;
 
-    //CompteBancari compte = new CompteBancari(iban, Client, saldoinicial);
-
-    public Targeta (double numeroTarjeta, int pin, Date dataCaducitat, int cvc ){
-        
+    public Targeta(double numeroTarjeta, int pin, Date dataCaducitat, int cvc ){
         this.numeroTarjeta=numeroTarjeta;
         this.dataCaducitat=dataCaducitat;
         this.cvc=cvc;

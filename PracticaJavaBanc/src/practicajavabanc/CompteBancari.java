@@ -13,7 +13,7 @@ public abstract class CompteBancari {
     protected String iban;
     protected double saldo;
     protected Client propietari;
-    public double importe;
+    protected double importe;
     
     public String getIban() {
         return iban;
@@ -39,14 +39,13 @@ public abstract class CompteBancari {
         this.saldo = saldo;
         this.propietari = propietari;
     }
-    public double consultarSaldo(CompteBancari compte){
-        return compte.saldo;
+    public double consultarSaldo(){
+        return saldo;
     }
-    public boolean compteDescobert(CompteBancari compte,double importe){
-        return(compte.saldo-importe<0);
+    public boolean compteDescobert(double importe){
+        return(saldo-importe<0);
     }
-    public void ingressarDiners(CompteBancari compte,double importe){
-        compte.saldo=compte.saldo+importe;
-        
+    public void ingressarDiners(double importe){
+        saldo=saldo+importe;  
     }
 }

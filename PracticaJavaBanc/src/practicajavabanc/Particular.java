@@ -10,15 +10,12 @@ public class Particular extends Client {
         super(nom, password);
         this.nif = nif;
     }
-
     public String getNif() {
         return nif;
     }
-
     public void setNif(String nif) {
         this.nif = nif;
     }
-
     @Override
     public String toString() {
         return super.toString() +", és un Particular{" +

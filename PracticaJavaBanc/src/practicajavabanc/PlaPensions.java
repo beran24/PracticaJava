@@ -19,8 +19,8 @@ public class PlaPensions extends CompteBancari {
         this.dataVenciment= new Date();
     }
     @Override
-    public void ingressarDiners(CompteBancari compte,double importe){
-        compte.saldo=compte.saldo+(importe*tipusInteres/100);
+    public void ingressarDiners(double importe){
+        saldo=saldo+(importe*tipusInteres/100);
     }
     public boolean treureDiners(PlaPensions compte,double importe){
         if(compte.saldo-importe>0){
@@ -30,6 +30,4 @@ public class PlaPensions extends CompteBancari {
         else return false;
             
     }
-    
-    
 }

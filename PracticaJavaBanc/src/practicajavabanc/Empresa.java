@@ -10,15 +10,12 @@ public class Empresa extends Client {
         super(nom, password);
         this.cif = cif;
     }
-
     public String getCif() {
         return cif;
     }
-
     public void setCif(String cif) {
         this.cif = cif;
     }
-
     @Override
     public String toString() {
         return super.toString() + ", és una Empresa{" +

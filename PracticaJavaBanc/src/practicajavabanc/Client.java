@@ -6,7 +6,6 @@ public abstract class Client implements Comparable<Client>{
     protected int password;
     protected int edat;
 
-    
     public Client(String nom, int password) {
         this.nom = nom;
         this.password = password;
