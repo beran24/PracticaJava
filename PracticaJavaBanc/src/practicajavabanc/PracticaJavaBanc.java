@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicajavabanc;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +17,7 @@ public class PracticaJavaBanc {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String nom;
+        /*String nom;
         int pass;
         String nif;
         ArrayList<Client> clients= new ArrayList<>();
@@ -37,7 +36,52 @@ public class PracticaJavaBanc {
                     clients.add(new Particular(nom,pass,nif));
                 case 2:
             }
+        }*/
+        int opcio;
+
+        System.out.println("Benvinguda al Portal JavaBank\n\nEscull una opció:\n1.- Crear client\n2.- Entrar a l'aplicació");
+        Scanner scan = new Scanner(System.in);
+
+        while (1==1) {
+
+            opcio = scan.nextInt();
+
+            switch (opcio) {
+                case 1:
+                    //crearClient();
+                    System.out.println("A");
+                    break;
+                case 2:
+                    //entrarApp();
+                    if(true){
+                        System.out.println("Escull la operació que vulguis fer: " +
+                                "\n1.- Traspàs")
+                        ;
+                        opcio = scan.nextInt();
+                        switch (opcio){
+                            case 1:
+
+                                break;
+
+
+                        }
+
+                    }else{
+                        System.out.println("Les dades introduïdes són incorrectes. Torna a introduir una opció:" +
+                        "\n1.- Crear client\n2.- Entrar a l'aplicació");
+                        break;
+                    }
+
+                    System.out.println("B");
+                    break;
+                default:
+                    System.out.println("La opció escollida és incorrecte. Torna a introduir una opció.");
+
+            }
         }
+
+
+
     }
     
 }
