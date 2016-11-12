@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicajavabanc;
+//package practicajavabanc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -91,29 +91,30 @@ public final class BancUtil {
         }
         return 0;
     }
-    public static void crearClient(){
+    public static void crearClient() {
         System.out.println("1.- Client Particular\n2.- Client Empresa");
-        opcio=0;
-        while(opcio!=1&&opcio!=2){
-        opcio=lectura.nextInt();
+        opcio = 0;
+        while (opcio != 1 && opcio != 2) {
+            opcio = lectura.nextInt();
         }
         System.out.println("Creacio un client.\nDigues nom");
-        nom=lectura.next();
+        nom = lectura.next();
         System.out.println("Creacio un client.\nDigues edat");
-        edat=lectura.nextInt();
+        edat = lectura.nextInt();
         System.out.println("Creacio un client.\nPosa el nif");
-        nif=lectura.next();
-        System.out.println("Creacio un client.\nPosa una password");
-        pass=lectura.nextInt();
-        if(existeixClient(clients,nif)){
+        nif = lectura.next();
+        if (existeixClient(clients, nif)) {
             System.out.println("Aquest client ja esta creat");
-        }else{
-            if(opcio==1)
-                clients.add(new Particular(nom,edat,pass,nif));
-            if(opcio==2)
-                clients.add(new Empresa(nom,edat,pass,nif));
-        } 
+            return;
+        }
+        System.out.println("Creacio un client.\nPosa una password");
+        pass = lectura.nextInt();
+        if (opcio == 1)
+            clients.add(new Particular(nom, edat, pass, nif));
+        if (opcio == 2)
+            clients.add(new Empresa(nom, edat, pass, nif));
     }
+
     public static boolean entrarApp(){
         System.out.println("Entrar App.Posa el nif/cif");
         nif=lectura.next();
