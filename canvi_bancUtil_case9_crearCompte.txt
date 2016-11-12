@@ -1,0 +1,79 @@
+//Canvi 1:
+//Afegir un case 9 de retorn quan es vol crear un compte. 
+
+ public static void crearCompte(){
+        if(client.getClass().equals(Particular.class)){
+            System.out.println("1.- Nomina\n2.- Diposit\n3.- Pla de pensions\n4.- Vivenda\n9.- Torna al menu");
+            flag=true;
+        }
+        if(client.getClass().equals(Empresa.class)){
+            System.out.println("1.- Nomina\n2.- Diposit\n9.- Torna al menu");
+            flag=false;
+        }
+        opcio=lectura.nextInt();
+        switch(opcio){
+            case 1:
+                System.out.println("Posa el iban");
+                iban=lectura.next();
+                if(flag){
+                    if(!(existeixCompte(comptes,iban,((Particular)client).nif))){
+                        comptes.add(new Nomina(iban,0,client));
+                    }else{
+                        System.out.println("El compte bancari ja existeix");
+                    }
+                }
+                if(!flag){
+                    if(!(existeixCompte(comptes,iban,((Empresa)client).cif))){
+                        comptes.add(new Nomina(iban,0,client));
+                    }else{
+                        System.out.println("El compte bancari ja existeix");
+                    }
+                        
+                }
+                break;
+            case 2:
+                System.out.println("Posa el iban");
+                iban=lectura.next();
+                System.out.println("Posa la quantitat a dipositar");
+                minD=lectura.nextDouble();
+                if(minD>minDiners){
+                    if(flag){
+                        if(!(existeixCompte(comptes,iban,((Particular)client).nif))){
+                            comptes.add(new Diposit(iban,minD,client));
+                        }else{
+                            System.out.println("El compte bancari ja existeix");
+                        }
+                    }
+                    if(!flag){
+                        if(!(existeixCompte(comptes,iban,((Empresa)client).cif))){
+                            comptes.add(new Diposit(iban,minD,client));
+                        }else{
+                            System.out.println("El compte bancari ja existeix");
+                        }
+
+                    } 
+                }else{
+                    System.out.println("El minim de diners han de ser 10000 euros");
+                }
+                break;
+            case 3:
+                System.out.println("Posa el iban");
+                iban=lectura.next();
+                if(!(existeixCompte(comptes,iban,((Particular)client).nif))){
+                    comptes.add(new PlaPensions(iban,0,client));
+                }else{
+                    System.out.println("El compte bancari ja existeix");
+                }
+                break;
+            case 4:
+                System.out.println("Posa el iban");
+                iban=lectura.next();
+                if(!(existeixCompte(comptes,iban,((Particular)client).nif))){
+                    comptes.add(new Vivenda(iban,0,client));
+                }else{
+                    System.out.println("El compte bancari ja existeix");
+                }
+            case 9:
+                break;
+
+
