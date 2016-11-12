@@ -24,6 +24,7 @@ public final class BancUtil {
     static int edat;
     static  int passwordl;
     static CompteBancari compteClient;
+    static CompteBancari compteClientDestinatari;
     static Client client;
     static String nif;
     static ArrayList<Client> clients= new ArrayList<>();
@@ -205,51 +206,103 @@ public final class BancUtil {
                 }
         }
     }
-    public static void consultarSaldoCompte(){  
-    }
     public static void ennumerarComptesClient(){
         for(CompteBancari compte: comptes){
             if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
                 if(((Particular)compte.propietari).compareTo(client)==0){
-                System.out.println("Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                System.out.println("Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
                 }
             }
             if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
                 if(((Empresa)compte.propietari).compareTo(client)==0){
-                    System.out.println("Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                    System.out.println("Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
                 }
             }       
         }
     }
     public static void triarCompteClient(){
-        
-        for(CompteBancari compte: comptes){
-            counter1=0;
-            //counter2=0;
-            if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
-                if(((Particular)compte.propietari).compareTo(client)==0){
-                System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+ compte.getIban());
-                comptesClient.add(compte);
-                counter1++;
+        counter1=0;
+        comptesClient.clear();
+        if(!comptes.isEmpty()){
+            for(CompteBancari compte: comptes){
+                if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
+                    if(((Particular)compte.propietari).compareTo(client)==0){
+                    System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
+                    comptesClient.add(compte);
+                    counter1++;
+                    }
+                }
+                if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
+                    if(((Empresa)compte.propietari).compareTo(client)==0){
+                    System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+" IBAN "+compte.getIban());
+                    comptesClient.add(compte);
+                    counter1++;
+                    }
                 }
             }
-            if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
-                if(((Empresa)compte.propietari).compareTo(client)==0){
-                System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+ compte.getIban());
-                comptesClient.add(compte);
-                counter1++;
-                }
-            }
+            posicioCompte=lectura.nextInt();
+            compteClient=comptesClient.get(posicioCompte);
+        }else{
+            System.out.println("No tens cap compte encara. Crean un");
         }
-        posicioCompte=lectura.nextInt();
-        compteClient=comptesClient.get(posicioCompte);
+    }
+    public static void triarCompteClient(String iban){
+        counter2=0;
+        for(CompteBancari compte: comptes){
+            if(compte.iban.equals(iban)){
+                compteClientDestinatari=comptes.get(counter2);
+                System.out.println(counter2+" Compte "+compte.getClass().getSimpleName()+" IBAN "+ compte.getIban());
+            }
+            counter2++;
+        }
     }
     public static void ferTraspas(){
-        System.out.print("Desde quina compte vols fer el traspas");
-        triarCompteClient();
-        System.out.println("A quina compte vols fer el traspas");
-        iban=lectura.next();
         
+        System.out.print("Desde quina compte vols fer el traspas\n");
+        triarCompteClient();
+        if(compteClient.getClass().equals(Nomina.class)){
+            System.out.println("A quina compte vols fer el traspas");
+            iban=lectura.next();
+            triarCompteClient(iban);
+            System.out.println("Quants diners vols traspassar");
+            minD=lectura.nextDouble();
+            ((Nomina)compteClient).traspas(compteClientDestinatari, minD);
+        }else{
+            System.out.println("Desde aquesta compte no es poden fer traspassos");
+        }    
+        
+        
+    }
+    public static void ferIngres(){
+        System.out.print("Tria el compte on vols fer l'ingres\n");
+        try{
+            triarCompteClient();
+            System.out.println("Quants diners vols ingressar");
+            minD=lectura.nextDouble();
+            compteClient.ingressarDiners(minD);
+        }catch(Exception e){
+            System.out.print("No has seleccionat el compte be\n");
+        }
+    }
+    public static void ferConsultaSaldo(){
+        System.out.print("Tria el compte que vols consultar el saldo\n");
+        try{
+            triarCompteClient();
+            System.out.println("Saldo: "+compteClient.consultarSaldo());
+        }catch(Exception e){
+            System.out.print("No has seleccionat el compte be\n");
+        }
+    }
+    public static void eliminarCompte(){
+        System.out.print("Tria el compte que vols eliminar\n");
+        try{
+            triarCompteClient();
+            if(comptes.remove(compteClient)){
+                System.out.print("El compte ha sigut eliminat\n");
+        }
+        }catch(Exception e){
+            System.out.print("No has seleccionat el compte be\n"); 
+        }
         
     }
 }
