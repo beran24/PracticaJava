@@ -1,0 +1,47 @@
+Fitxer PracticaJavaBanc.java, arreglar un bucle infinit a la linia 16 (System.out.println("Traspas");). El scan es quedava 
+amb lultima tecla guardada a dins de la funcio BancUtil.crecClient suposo i entrava en bucle printant "Traspas". 
+Canvis a les linies 12-15 i 35.
+
+switch (opcio) {
+                case 1:
+                    BancUtil.crearClient();
+                    System.out.println("Chivato creacio");
+                    break;
+                case 2:
+                    if(BancUtil.entrarApp()){
+
+                        do{
+                            System.out.println("Escull la operació que vulguis fer: " +"\n1.- Traspàs\n2.- Crear compte\n9.- Enrere");
+                            opcio2 = scan.nextInt();
+                            switch (opcio2){
+                                case 1:
+                                    System.out.println("Traspas");
+                                    break;
+                                case 2:
+                                    BancUtil.crearCompte();
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    break;
+                                case 6:
+                                    break;
+                                case 9:
+                                    opcio2=9;
+                                    break;
+                            }
+                        }while(opcio2!=9);
+
+                    }else{
+                        System.out.println("Les dades introduïdes són incorrectes.");
+                        break;
+                    }
+
+                    System.out.println("B");
+                    break;
+                default:
+                    System.out.println("La opció escollida és incorrecte. Torna a introduir una opció.");
+
+            }
