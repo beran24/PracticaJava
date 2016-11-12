@@ -34,12 +34,14 @@ public class PracticaJavaBanc {
                     break;
                 case 2:
                     if(BancUtil.entrarApp()){
-                        System.out.println("Escull la operació que vulguis fer: " +"\n1.- Traspàs\n2.- Crear compte\n9.- Enrere");
-                        opcio2 = scan.nextInt();
+                        opcio2=0;
                         while(opcio2!=9){
+                            BancUtil.ennumerarComptesClient();
+                            System.out.println("Escull la operació que vulguis fer: " +"\n1.- Traspàs\n2.- Crear compte\n9.- Enrere");
+                            opcio2 = scan.nextInt();
                             switch (opcio2){
                                 case 1:
-                                    System.out.println("Traspas");
+                                    
                                     break;
                                 case 2:
                                     BancUtil.crearCompte();

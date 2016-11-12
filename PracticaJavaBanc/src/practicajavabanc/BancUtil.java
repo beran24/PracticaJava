@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//package practicajavabanc;
+package practicajavabanc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public final class BancUtil {
     static Client client;
     static String nif;
     static ArrayList<Client> clients= new ArrayList<>();
-    static ArrayList<Particular> particulars= new ArrayList<>();
+    
     static ArrayList<CompteBancari> comptes= new ArrayList<>();
     static Scanner lectura=new Scanner(System.in);
     public static boolean existeixCompte(ArrayList<CompteBancari> comptes,String iban){
@@ -114,7 +114,6 @@ public final class BancUtil {
         if (opcio == 2)
             clients.add(new Empresa(nom, edat, pass, nif));
     }
-
     public static boolean entrarApp(){
         System.out.println("Entrar App.Posa el nif/cif");
         nif=lectura.next();
@@ -123,19 +122,7 @@ public final class BancUtil {
         if(existeixClient(clients,nif)){
             if((clients.get(posicioClient(clients,nif)).password)==(passwordl)){
                 client=clients.get(posicioClient(clients,nif));
-                for(CompteBancari compte: comptes){
-                    if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
-                        if(((Particular)compte.propietari).compareTo(client)==0){
-                        System.out.println("Comptes bancari: "+ compte.getIban());
-                        }
-                    }
-                    if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
-                        if(((Empresa)compte.propietari).compareTo(client)==0){
-                        System.out.println("Comptes bancari: "+ compte.getIban());
-                        }
-                    }
-                    
-                }
+                ennumerarComptesClient();
                 return true;
             }
         }
@@ -214,5 +201,27 @@ public final class BancUtil {
                     System.out.println("El compte bancari ja existeix");
                 }
         }
+    }
+    public static void consultarSaldoCompte(){  
+    }
+    public static void ennumerarComptesClient(){
+        for(CompteBancari compte: comptes){
+                    if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
+                        if(((Particular)compte.propietari).compareTo(client)==0){
+                        System.out.println("Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                        }
+                    }
+                    if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
+                        if(((Empresa)compte.propietari).compareTo(client)==0){
+                        System.out.println("Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                        }
+                    }
+                    
+                }
+    }
+    public static void ferTraspas(){
+        System.out.println("A quina compte vols fer el traspas");
+        iban=lectura.next();
+        
     }
 }
