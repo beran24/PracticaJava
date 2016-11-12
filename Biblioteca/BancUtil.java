@@ -24,6 +24,7 @@ public final class BancUtil {
     static int edat;
     static  int passwordl;
     static CompteBancari compteClient;
+    static CompteBancari compteClientDestinatari;
     static Client client;
     static String nif;
     static ArrayList<Client> clients= new ArrayList<>();
@@ -211,31 +212,30 @@ public final class BancUtil {
         for(CompteBancari compte: comptes){
             if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
                 if(((Particular)compte.propietari).compareTo(client)==0){
-                System.out.println("Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                System.out.println("Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
                 }
             }
             if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
                 if(((Empresa)compte.propietari).compareTo(client)==0){
-                    System.out.println("Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                    System.out.println("Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
                 }
             }       
         }
     }
     public static void triarCompteClient(){
-        
+        counter1=0;
+        //counter2=0;
         for(CompteBancari compte: comptes){
-            counter1=0;
-            //counter2=0;
             if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
                 if(((Particular)compte.propietari).compareTo(client)==0){
-                System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
                 comptesClient.add(compte);
                 counter1++;
                 }
             }
             if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
                 if(((Empresa)compte.propietari).compareTo(client)==0){
-                System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+ compte.getIban());
+                System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+" IBAN "+compte.getIban());
                 comptesClient.add(compte);
                 counter1++;
                 }
@@ -244,11 +244,42 @@ public final class BancUtil {
         posicioCompte=lectura.nextInt();
         compteClient=comptesClient.get(posicioCompte);
     }
+    public static void triarCompteClient(String iban){
+        counter2=0;
+        for(CompteBancari compte: comptes){
+            if(compte.iban.equals(iban)){
+                compteClientDestinatari=comptes.get(counter2);
+                System.out.println(counter2+" Compte "+compte.getClass().getSimpleName()+" IBAN "+ compte.getIban());
+            }
+            counter2++;
+        }
+    }
     public static void ferTraspas(){
-        System.out.print("Desde quina compte vols fer el traspas");
+        System.out.print("Desde quina compte vols fer el traspas\n");
         triarCompteClient();
-        System.out.println("A quina compte vols fer el traspas");
-        iban=lectura.next();
+        if(compteClient.getClass().equals(Nomina.class)){
+            System.out.println("A quina compte vols fer el traspas");
+            iban=lectura.next();
+            triarCompteClient(iban);
+            System.out.println("Quants diners vols traspassar");
+            minD=lectura.nextDouble();
+            ((Nomina)compteClient).traspas(compteClientDestinatari, minD);
+        }else{
+            System.out.println("Aquesta compte no pot fer traspassos");
+        }
+        
+    }
+    public static void ferIngres(){
+        System.out.print("Tria el compte on vols fer l'ingres\n");
+        triarCompteClient();
+        System.out.println("Quants diners vols ingressar");
+        minD=lectura.nextDouble();
+        compteClient.ingressarDiners(minD);
+    }
+    public static void ferConsultaSaldo(){
+        System.out.print("Tria el compte que vols consultar el saldo\n");
+        triarCompteClient();
+        System.out.println("Saldo: "+compteClient.consultarSaldo());
         
         
     }
