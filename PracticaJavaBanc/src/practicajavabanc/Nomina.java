@@ -1,8 +1,13 @@
+package practicajavabanc;
 /**
  * Created by mario on 9/11/16.
  */
-public class Nomina extends CompteBancari implements TreureDinersAccions {
-    protected int tipusInteres=2;
+public class Nomina extends CompteBancari {
+
+    /**
+     *
+     */
+    protected int tipusInteres=0;
 
     public Nomina(String iban, double saldo, Client propietari) {
         super(iban, saldo, propietari);
@@ -28,8 +33,6 @@ public class Nomina extends CompteBancari implements TreureDinersAccions {
     public void ingressarDiners(double importe){
         saldo=saldo+importe+(importe*tipusInteres/100);  
     }
-
-    @Override
     public boolean treureDiners(double importe){
         if(saldo-importe>0){
             saldo=saldo-importe;

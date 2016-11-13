@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package practicajavabanc;
 
 /**
  *
@@ -20,12 +21,10 @@ public abstract class CompteBancari implements CompteAccions {
     public void setIban(String iban) {
         this.iban = iban;
     }
-
     @Override
     public double getSaldo() {
         return saldo;
     }
-
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
@@ -41,11 +40,13 @@ public abstract class CompteBancari implements CompteAccions {
         this.saldo = saldo;
         this.propietari = propietari;
     }
-
+    
+    public double consultarSaldo(){
+        return saldo;
+    }
     public boolean compteDescobert(double importe){
         return(saldo-importe<0);
     }
-
     @Override
     public void ingressarDiners(double importe){
         saldo=saldo+importe;  

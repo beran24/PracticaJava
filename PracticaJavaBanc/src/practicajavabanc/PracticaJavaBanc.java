@@ -26,49 +26,54 @@ public class PracticaJavaBanc {
             System.out.println("Benvinguda al Portal JavaBank\n\nEscull una opció:\n1.- Crear client\n2.- Entrar a l'aplicació");
             Scanner scan = new Scanner(System.in);
             opcio = scan.nextInt();
-
             switch (opcio) {
                 case 1:
                     BancUtil.crearClient();
-                    System.out.println("Chivato creacio");
                     break;
                 case 2:
                     if(BancUtil.entrarApp()){
                         opcio2=0;
                         while(opcio2!=9){
+                            System.out.println("_______________________________________________");
                             BancUtil.ennumerarComptesClient();
-                            System.out.println("Escull la operació que vulguis fer: " +"\n1.- Traspàs\n2.- Crear compte\n9.- Enrere");
+                            System.out.println("Escull la operació que vulguis fer: \n1.- Crear compte\n2.- Fer ingres\n3.- Retirar efectiu\n4.- Consulta saldo\n5.- Fer traspas\n6.- Solicitar trajeta\n7.- Eliminar Compte\n8.- Comprovar interesos\n9.- Enrere\n");
                             opcio2 = scan.nextInt();
                             switch (opcio2){
                                 case 1:
-                                    
-                                    break;
-                                case 2:
                                     BancUtil.crearCompte();
                                     break;
+                                case 2:
+                                    BancUtil.ferIngres();
+                                    break;
                                 case 3:
+                                    BancUtil.retirarEfectiu();
                                     break;
                                 case 4:
+                                    BancUtil.ferConsultaSaldo();
                                     break;
                                 case 5:
+                                    BancUtil.ferTraspas();
                                     break;   
                                 case 6:
+                                    BancUtil.solicitarTarjeta();
                                     break;
+                                case 7:
+                                    BancUtil.eliminarCompte();
+                                    break;
+                                case 8:
+                                    break;    
                                 case 9:
                                     opcio2=9;
                                     break;
                             }
                         }
-
                     }else{
-                        System.out.println("Les dades introduïdes són incorrectes.");
+                        System.out.println("Les dades introduïdes són incorrectes\n");
                         break;
                     }
-
-                    System.out.println("B");
                     break;
                 default:
-                    System.out.println("La opció escollida és incorrecte. Torna a introduir una opció.");
+                    System.out.println("La opció escollida és incorrecte. Torna a introduir una opció.\n");
 
             }
         }
