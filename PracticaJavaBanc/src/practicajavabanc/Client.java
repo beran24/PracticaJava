@@ -1,7 +1,4 @@
-/**
- /**
- * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
- */
+package practicajavabanc;
 public abstract class Client implements Comparable<Client>  {
 
     protected String nom;
