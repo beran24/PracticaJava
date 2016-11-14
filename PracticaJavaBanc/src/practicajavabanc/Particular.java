@@ -6,7 +6,7 @@ public class Particular extends Client {
     /**
      * Classe Particular, hereta de la classe Client. Redefinició del mètode toString i compareTo.
      * Atributs de la classe Particular:
-     * protected String nif;
+     * protected String nif
      */
     //Atributs
     protected String nif;
@@ -33,18 +33,6 @@ public class Particular extends Client {
         return nif;
     }
 
-    /**
-     * Setter nif. Estableix nif del particular
-     * @param nif
-     */
-    public void setNif(String nif) {
-        this.nif = nif;
-    }
-
-    /**
-     * Override del mètode toString de la classe Object.
-     * @return un nou String indicant el nom, adreça, edat, que és particular i el seu NIF.
-     */
     @Override
     public String toString() {
         return super.toString() +", és un Particular{" +
