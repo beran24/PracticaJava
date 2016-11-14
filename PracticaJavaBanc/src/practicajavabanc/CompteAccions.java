@@ -1,6 +1,12 @@
-package practicajavabanc;
+//package practicajavabanc;
 /**
- * Created by mario on 10/11/16.
+ * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
+ */
+
+/**
+ * Interfície CompteAccions que descriu els següents mètodes que s'implementaran:
+ * double getSaldo();
+ * void ingressarDiners(double importe);
  */
 public interface CompteAccions {
     double getSaldo();
