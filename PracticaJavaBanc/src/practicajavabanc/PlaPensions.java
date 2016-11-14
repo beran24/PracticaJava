@@ -7,7 +7,7 @@ public class PlaPensions extends CompteBancari {
     /**
      * Classe PlaPensions, hereta de la classe CompteBancari. Override de mètode ingressarDiners.
      * Atributs de la classe PlaPensions:
-     * protected int tipusInteres=2;
+     * protected int tipusInteres;
      * protected Date dataVenciment;
      */
     //Atributs
