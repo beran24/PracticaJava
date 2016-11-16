@@ -13,10 +13,10 @@ public class Empresa extends Client {
 
     /**
      * Constructor de la classe Empresa
-     * @param nom
-     * @param edat
-     * @param password
-     * @param cif
+     * @param nom rep el nom de l'empresa
+     * @param edat rep l'antiguitat de l'empresa
+     * @param password rep el password de l'empresa
+     * @param cif rep el cif de l'empresa
      */
     //Constructor
      public Empresa(String nom, int edat, int password, String cif) {
@@ -45,7 +45,7 @@ public class Empresa extends Client {
 
     /**
      * Override del mètode compareTo. Ens permet comparar els cifs de les emkpreses
-     * @param o
+     * @param o espera un objecte Client
      * @return si els cifs de les empreses són iguals (return 0) o són diferents (return diferent de 0)
      */
     @Override
