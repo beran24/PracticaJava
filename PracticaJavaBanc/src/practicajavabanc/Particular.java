@@ -13,10 +13,10 @@ public class Particular extends Client {
 
     /**
      * Constructor de la classe Particular.
-     * @param nom
-     * @param edat
-     * @param password
-     * @param nif
+     * @param nom rep el nom del particular
+     * @param edat rep l'edat del particular
+     * @param password rep la password del particular
+     * @param nif rep el nif del particular
      */
     //Constructor
      public Particular(String nom, int edat, int password, String nif) {
@@ -33,6 +33,10 @@ public class Particular extends Client {
         return nif;
     }
 
+    /**
+     * Override del mètode toString de la classe Object.
+     * @return un nou String indicant el nom, adreça, edat, que és un particular i el seu NIF.
+     */
     @Override
     public String toString() {
         return super.toString() +", és un Particular{" +
@@ -42,7 +46,7 @@ public class Particular extends Client {
 
     /**
      * Override del mètode compareTo. Ens permet comparar els nifs dels particulars
-     * @param o
+     * @param o rep un objecte Client
      * @return si els nifs dels particulars són iguals (return 0) o són diferents (return diferent de 0)
      */
     @Override
