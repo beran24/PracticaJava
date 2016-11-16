@@ -20,9 +20,9 @@ public abstract class CompteBancari implements CompteAccions {
     //Constructor
     /**
      * Constructor de la classe CompteBancari
-     * @param iban
-     * @param saldo
-     * @param propietari
+     * @param iban rep el IBAN del compte bancari
+     * @param saldo rep el saldo del compte bancari
+     * @param propietari rep un objecte Client
      **/
     public CompteBancari(String iban, double saldo, Client propietari) {
         this.iban = iban;
