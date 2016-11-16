@@ -25,7 +25,7 @@ public class Nomina extends CompteBancari implements TreureDinersAccions {
     //Mètodes públics
 
     /**
-     * Getter tipus d'interés.
+     * Getter tipusInterés.
      * @return el tipus d'interés del compte Nomina
      */
     public int getTipusInteres() {
@@ -33,7 +33,7 @@ public class Nomina extends CompteBancari implements TreureDinersAccions {
     }
 
     /**
-     * Setter tipus d'interés. Estableix el tipus d'interés del compte Nomina.
+     * Setter tipusInterés. Estableix el tipus d'interés del compte Nomina.
      * @param tipusInteres
      */
     public void setTipusInteres(int tipusInteres) {
