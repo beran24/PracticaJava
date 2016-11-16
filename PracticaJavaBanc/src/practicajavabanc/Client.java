@@ -102,7 +102,7 @@ public abstract class Client implements Comparable<Client>  {
 
     /**
      * Override del mètode compareTo. Ens permet comparar els noms dels clients
-     * @param o
+     * @param o rep un objecte Client
      * @return si els noms dels clients són iguals (return 0) o són diferents (return diferent de 0)
      */
     @Override
