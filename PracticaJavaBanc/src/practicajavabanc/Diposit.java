@@ -4,9 +4,9 @@ import java.util.Date;
 /**
  * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
  */
-public class Diposit extends CompteBancari {
+public class Diposit extends CompteBancari implements TreureDinersAccions{
     /**
-     * Classe Diposit, hereta de la classe CompteBancari.
+     * Classe Diposit, hereta de la classe CompteBancari. Implementa la interfície TreureDinersAccions.
      * Atributs de la classe PlaPensions:
      * protected int tipusInteres;
      * public double minDiners;
@@ -22,9 +22,10 @@ public class Diposit extends CompteBancari {
 
     /**
      * Constructor de la classe Diposit
-     * @param iban
-     * @param saldo
-     * @param propietari
+     * @param iban rep el IBAN del Diposit
+     * @param saldo rep el saldo del Diposit
+     * @param propietari rep l'objecte Client
+     * dataUltimaVerificacio és una nova data
      */
     public Diposit(String iban, double saldo, Client propietari) {
         super(iban, saldo, propietari);
@@ -77,6 +78,7 @@ public class Diposit extends CompteBancari {
      * @param importe
      * @return true si hem pogut treure diners (importe) en el compte Dipòsit. Sino, retorna false.
      */
+    @Override
     public boolean treureDiners(double importe){
         if(saldo-importe>0){
             saldo=saldo-importe;

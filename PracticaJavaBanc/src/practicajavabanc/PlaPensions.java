@@ -3,9 +3,10 @@ import java.util.Date;
 /**
  * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
  */
-public class PlaPensions extends CompteBancari {
+public class PlaPensions extends CompteBancari implements TreureDinersAccions{
     /**
-     * Classe PlaPensions, hereta de la classe CompteBancari. Override de mètode ingressarDiners.
+     * Classe PlaPensions, hereta de la classe CompteBancari. Implementa la interfície TreureDinersAccions.
+     * Override de mètode ingressarDiners.
      * Atributs de la classe PlaPensions:
      * protected int tipusInteres;
      * protected Date dataVenciment;
@@ -17,9 +18,9 @@ public class PlaPensions extends CompteBancari {
     //Constructor
     /**
      * Constructor de la classe PlaPensions
-     * @param iban
-     * @param saldo
-     * @param propietari
+     * @param iban rep el IBAN del Pla de Pensions
+     * @param saldo rep el saldo del Pla de Pensions
+     * @param propietari rep l'objecte Client
      */
     public PlaPensions(String iban, double saldo, Client propietari) {
         super(iban, saldo, propietari);
@@ -69,6 +70,7 @@ public class PlaPensions extends CompteBancari {
      * @param importe
      * @return true si hem pogut treure diners (importe) en el compte PlaPensions. Sino, retorna false.
      */
+    @Override
     public boolean treureDiners(double importe){
         if((saldo-importe>0)&&(propietari.edat > 65)){
             saldo=saldo-importe;
