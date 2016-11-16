@@ -5,7 +5,9 @@
  */
 package practicajavabanc;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+import java.io.*;
 
 /**
  *
@@ -22,7 +24,7 @@ public final class BancUtil {
     static String nom;
     static int pass;
     static int edat;
-    static  int passwordl;
+    static int passwordl;
     static CompteBancari compteClient;
     static CompteBancari compteClientDestinatari;
     static Client client;
@@ -101,23 +103,37 @@ public final class BancUtil {
         return 0;
     }
     public static void crearClient() {
-        System.out.println("1.- Client Particular\n2.- Client Empresa");
+        System.out.println("1.- Client Particular\n2.- Client Empresa\n");
         opcio = 0;
         while (opcio != 1 && opcio != 2) {
+            try{
             opcio = lectura.nextInt();
-        }
+            }catch(Exception e){
+                System.out.println("Opcio 1 o 2 solament.\n");
+            }
+            if(opcio != 1 && opcio != 2){
+                System.out.println("Opcio 1 o 2 solament.\n");
+            }
+        }try{
         System.out.println("Creacio un client.\nDigues nom");
         nom = lectura.next();
-        System.out.println("Creacio un client.\nDigues edat");
+        System.out.println("Digues edat");
         edat = lectura.nextInt();
-        System.out.println("Creacio un client.\nPosa el nif");
+        System.out.println("Posa el nif");
         nif = lectura.next();
         if (existeixClient(clients, nif)) {
             System.out.println("Aquest client ja esta creat");
             return;
         }
-        System.out.println("Creacio un client.\nPosa una password");
-        pass = lectura.nextInt();
+        System.out.println("Posa una password");
+        Console cnsl = System.console();
+        char[] pwd = cnsl.readPassword();
+        pass= Integer.parseInt(new String(pwd));
+        //pass = lectura.nextInt();
+        }catch(Exception e){
+            System.out.println("Has introduit malament les dades");
+            e.printStackTrace();
+        }
         if (opcio == 1)
             clients.add(new Particular(nom, edat, pass, nif));
         if (opcio == 2)
@@ -125,10 +141,17 @@ public final class BancUtil {
     }
     public static boolean entrarApp(){
         if(!clients.isEmpty()){
+            try{
             System.out.println("Entrar App.Posa el nif/cif");
             nif=lectura.next();
             System.out.println("Posa la password");
-            passwordl=lectura.nextInt();
+            Console cnsl = System.console();
+            char[] pwd = cnsl.readPassword();
+            passwordl= Integer.parseInt(new String(pwd));
+            //passwordl=lectura.nextInt();
+            }catch(Exception e){
+                System.out.println("Has introduit malament les dades");
+            }
             if(existeixClient(clients,nif)){
                 if((clients.get(posicioClient(clients,nif)).password)==(passwordl)){
                     client=clients.get(posicioClient(clients,nif));
@@ -152,7 +175,11 @@ public final class BancUtil {
             System.out.println("1.- Nomina\n2.- Diposit\n");
             flag=false;
         }
+        try{
         opcio=lectura.nextInt();
+        }catch(Exception e){
+            System.out.println("Posa la contrasenya be");
+        }
         switch(opcio){
             case 1:
                 System.out.println("Posa el iban");
@@ -177,7 +204,11 @@ public final class BancUtil {
                 System.out.println("Posa el iban");
                 iban=lectura.next();
                 System.out.println("Posa la quantitat a dipositar");
+                try{
                 minD=lectura.nextDouble();
+                }catch(Exception e){
+                    System.out.println("Has de posar la quantitat de diners amb decimals");
+                }
                 if(minD>minDiners){
                     if(flag){
                         if(!(existeixCompte(comptes,iban))){
@@ -251,7 +282,11 @@ public final class BancUtil {
                     }
                 }
             }
+            try{
             posicioCompte=lectura.nextInt();
+            }catch(Exception e){
+                System.out.println("Posa un numero de compte valid");
+            }
             compteClient=comptesClient.get(posicioCompte);
         }else{
             System.out.println("No tens cap compte encara. Crean un");
@@ -270,16 +305,28 @@ public final class BancUtil {
     public static void ferTraspas(){
         
         System.out.print("Desde quina compte vols fer el traspas\n");
+        try{
         triarCompteClient();
+        }catch(Exception e){
+            System.out.print("Has de triar la compte correcta\n");
+        }
         if(compteClient.getClass().equals(Nomina.class)){
-            System.out.println("A quina compte vols fer el traspas");
+            System.out.println("Posa l'IBAN del compte al qual vols fer el traspas");
             iban=lectura.next();
+            try{
             triarCompteClient(iban);
+            }catch(Exception e){
+                System.out.println("L'IBAN no existeix");
+            }
             System.out.println("Quants diners vols traspassar");
+            try{
             minD=lectura.nextDouble();
+            }catch(Exception e){
+                System.out.print("Recorda que el numero es amb decimals amb un punt\n");
+            }
             ((Nomina)compteClient).traspas(compteClientDestinatari, minD);
         }else{
-            System.out.println("Desde aquesta compte no es poden fer traspassos");
+            System.out.println("Desde aquesta compte no es poden fer traspassos\n");
         }    
         
         
@@ -299,7 +346,7 @@ public final class BancUtil {
         System.out.print("Tria el compte que vols consultar el saldo\n");
         try{
             triarCompteClient();
-            System.out.println("Saldo: "+compteClient.consultarSaldo());
+            System.out.println("Saldo: "+String.format("%.2f", compteClient.consultarSaldo()));
         }catch(Exception e){
             System.out.print("No has seleccionat el compte be\n");
         }
@@ -343,7 +390,21 @@ public final class BancUtil {
         }
         
     }
-    public static void solicitarTarjeta(){
+    public static void solicitarTargeta(){
         
+    }
+    public static void comprovarInteressos(){
+        System.out.print("Tria el compte que vols mirar els interesos.Recorda que ha de ser un compte diposit\n");
+        try{
+            triarCompteClient();
+            if(compteClient.getClass().equals(Diposit.class)){
+                ((Diposit)compteClient).comprovarInteressos(new Date());
+            }else{
+                System.out.print("No es un compte diposit\n");
+            }
+            
+        }catch(Exception e){
+            System.out.print("No has seleccionat el compte be\n"); 
+        }
     }
 }
