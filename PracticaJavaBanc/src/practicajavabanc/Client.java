@@ -21,9 +21,9 @@ public abstract class Client implements Comparable<Client>  {
     //Constructor
     /**
      * Constructor de la classe Client.
-     * @param nom
-     * @param edat
-     * @param password
+     * @param nom rep el nom del client
+     * @param edat rep l'edat del client
+     * @param password rep la password del client
      */
     public Client(String nom, int edat, int password) {
         this.nom = nom;
