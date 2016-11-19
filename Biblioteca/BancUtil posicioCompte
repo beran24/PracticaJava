@@ -1,9 +1,10 @@
     /**
-     * Mètode posicioCompte. Aquest mètode rep per paràmetre l'ArrayList de CompteBancari i el iban. Ens permet saber 
-     * en quina posició de l'ArrayList de CompteBancari està ubicat l'IBAN que li acabem de passar (si aquest existeix)
+     * Mètode posicioCompte. Aquest mètode rep per paràmetre l'ArrayList de comptes (de tipus CompteBancari) i el iban. 
+     * Ens permet saber en quina posició de l'ArrayList de CompteBancari està ubicat l'IBAN que li acabem de passar 
+     * (si aquest existeix)
      * @param comptes
      * @param iban
-     * @return un "int" amb la posició del iban associat al compte bancari de l'ArrayList CompteBancari. Retornarà 0 
+     * @return un "int" amb la posició del iban associat al compte bancari de l'ArrayList comptes. Retornarà 0
      * sino existeix.
      */
     public static int posicioCompte(ArrayList<CompteBancari> comptes,String iban){
