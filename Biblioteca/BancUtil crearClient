@@ -6,7 +6,7 @@
      * NIF/CIF i paraula de pas dins de l'ArrayList. Si existeix, es confirma que el client ja existeix.
      */
     public static void crearClient() {
-        System.out.println("1.- Client Particular\n2.- Client Empresa\n");
+        System.out.println("1.- Client Particular\n2.- Client Empresa");
         opcio = 0;
         while (opcio != 1 && opcio != 2) {
             try{
