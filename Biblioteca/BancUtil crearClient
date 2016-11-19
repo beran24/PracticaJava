@@ -1,0 +1,44 @@
+    /**
+     * Mètode crearClient. Ens permet la creació d'un nou Client dins l'ArrayList de clients tot demanant les dades a
+     * l'usuari. Primer es demana escollir si el client és Particular o Empresa. A continuació, se li demanen les dades
+     * corresponents al nom, edat i NIF (si és particular) o CIF (si és empresa). Comprovarà si el NIF/CIF ja existeix 
+     * amb el mètode existeixClient, i sino existeix li acabarà demamant una paraula de pas, i afegirà nom, edat, 
+     * NIF/CIF i paraula de pas dins de l'ArrayList. Si existeix, es confirma que el client ja existeix.
+     */
+    public static void crearClient() {
+        System.out.println("1.- Client Particular\n2.- Client Empresa\n");
+        opcio = 0;
+        while (opcio != 1 && opcio != 2) {
+            try{
+                opcio = lectura.nextInt();
+            }catch(Exception e){
+                System.out.println("Ha d'escollir entre opció 1 o 2.\n");
+            }
+            if(opcio != 1 && opcio != 2){
+                System.out.println("Ha d'escollir entre opció 1 o 2.\n");
+            }
+        }try{
+            System.out.println("Creant nou client. Ha d'introduir les següents dades: \nIntrodueixi el seu nom: ");
+            nom = lectura.next();
+            System.out.println("Introdueixi l'edat: ");
+            edat = lectura.nextInt();
+            System.out.println("Introdueixi el NIF: ");
+            nif = lectura.next();
+            if (existeixClient(clients, nif)) {
+                System.out.println("Aquest client ja està creat");
+                return;
+            }
+            System.out.println("Introdueixi una paraula de pas");
+            //Console cnsl = System.console();
+            //char[] pwd = cnsl.readPassword();
+            //pass= Integer.parseInt(new String(pwd));
+            pass = lectura.nextInt();
+        }catch(Exception e){
+            System.out.println("Ha introduit malament les dades");
+            e.printStackTrace();
+        }
+        if (opcio == 1)
+            clients.add(new Particular(nom, edat, pass, nif));
+        if (opcio == 2)
+            clients.add(new Empresa(nom, edat, pass, nif));
+    }
