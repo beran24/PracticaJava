@@ -98,12 +98,17 @@ public class PlaPensions extends CompteBancari implements TreureDinersAccions{
      * @return true si s'ha pogut fer la transferència entre els dos comptes bancaris, i retorna false si no s'ha fer.
      */
     public boolean traspas ( CompteBancari rCompte,double importe){
-        if(!(compteDescobert(importe))){
+        if(!(compteDescobert(importe))&&(propietari.edat > 65)){
             rCompte.saldo=rCompte.saldo+importe;
             saldo=saldo-importe;
             return true;
         }else{
-            System.out.println("No pots fer el traspàs. No hi ha suficients diners al compte");
+            if(propietari.edat < 65) {
+                System.out.println("No pots fer traspàs de diners. La teva edat és inferior a 65 anys. Has de parlar " +
+                        "amb el director de JavaBank.");
+            }else {
+                System.out.println("No pots fer el traspàs. No hi ha suficients diners al compte");
+            }
             return false;
         }
     }
