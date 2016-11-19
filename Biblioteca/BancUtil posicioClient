@@ -1,11 +1,11 @@
     /**
-     * Mètode posicioClient. Aquest mètode rep per paràmetre l'ArrayList de Client i el nif/cif. Ens permet saber en 
-     * quina posició del'ArrayList de Client està ubicat el client que estem buscant, bé sigui amb el NIF (Particular) 
-     * o bé amb el CIF (Empresa), si existeix. 
+     * Mètode posicioClient. Aquest mètode rep per paràmetre l'ArrayList de clients (de tipus Client) i el nif/cif. 
+     * Ens permet saber en quina posició del'ArrayList de clients està ubicat el client que estem buscant, bé sigui amb 
+     * el NIF (Particular) o bé amb el CIF (Empresa), si existeix.
      * @param clients
      * @param nif
-     * @return un "int" amb la posició del client associat amb el CIF/NIF que li passem de l'ArrayList Client. 
-     * Retornarà 0 sino existeix. 
+     * @return un "int" amb la posició del client associat amb el CIF/NIF que li passem, dins de l'ArrayList clients.
+     * Retornarà 0 sino existeix.
      */
     public static int posicioClient(ArrayList<Client> clients,String nif){
         for(Client persona: clients){
