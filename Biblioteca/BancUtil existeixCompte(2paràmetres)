@@ -1,9 +1,9 @@
-/**
-     * Mètode existeixCompte. Aquest mètode rep per paràmetre l'ArrayList de Comptes Bancaris i el IBAN del compte
-     * que sol·licitem al Client per comprobar que existeix.
+    /**
+     * Mètode existeixCompte. Aquest mètode rep per paràmetre l'ArrayList de comptes (de tipus CompteBancari) i el IBAN 
+     * del compte que sol·licitem al Client per comprobar que existeix.
      * @param comptes
      * @param iban
-     * @return true si existeix el compte bancari dins l'ArrayList de CompteBancari amb l'IBAN que li passem, o false
+     * @return true si existeix el compte bancari dins l'ArrayList de comptes amb l'IBAN que li passem, o false
      * sino existeix.
      */
     public static boolean existeixCompte(ArrayList<CompteBancari> comptes,String iban){
