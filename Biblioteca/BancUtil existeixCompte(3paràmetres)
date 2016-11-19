@@ -6,8 +6,8 @@
      * @param comptes
      * @param iban
      * @param nif
-     * @return true si el compte bancari existeix i correspon a un Particular o Empresa, o false sino correspon a cap
-     * Client
+     * @return true si el compte bancari existeix en l'ArrayList de CompteBancari i correspon a un Particular o Empresa,
+     * o false sino correspon a cap Client
      */
     public static boolean existeixCompte(ArrayList<CompteBancari> comptes,String iban,String nif){
         for(CompteBancari compte: comptes){
@@ -26,4 +26,3 @@
         }
         return false;
     }
-    
