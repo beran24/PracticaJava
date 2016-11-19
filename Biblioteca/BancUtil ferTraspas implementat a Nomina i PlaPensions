@@ -1,0 +1,48 @@
+    /**
+     * Mètode ferTraspas. Primer ens sol·licita el compte bancari del client que ha accedit a l'aplicació desde la qual 
+     * farem la transferència, cridant el mètode triarCompteClient. A continuació ens sol·licita el IBAN al qual volem 
+     * fer el traspàs. Per últim, ens sol·licita la quantitat de diners del traspàs. A partir d'aquí, cridarà al mètode 
+     * traspas de les classes Nomina i PlaPensions ja qu són les úniques que tenen implementades aquest mètode.
+     */
+    public static void ferTraspas(){
+
+        System.out.print("Desde quin compte bancari vols fer el traspàs?\n");
+        try{
+            triarCompteClient();
+        }catch(Exception e){
+            System.out.print("Has de triar el compte bancari correcte\n");
+        }
+        if(compteClient.getClass().equals((Nomina.class))) {
+            System.out.println("Posa l'IBAN del compte al qual vols fer el traspàs");
+            iban = lectura.next();
+            try {
+                triarCompteClient(iban);
+            } catch (Exception e) {
+                System.out.println("L'IBAN no existeix");
+            }
+            System.out.println("Quants diners vols traspassar?");
+            try {
+                minD = lectura.nextDouble();
+            } catch (Exception e) {
+                System.out.print("Recorda que el número és amb decimals amb un punt\n");
+            }
+            ((Nomina) compteClient).traspas(compteClientDestinatari, minD);
+        }else if(compteClient.getClass().equals(PlaPensions.class)){
+            System.out.println("Posa l'IBAN del compte al qual vols fer el traspàs");
+            iban = lectura.next();
+            try {
+                triarCompteClient(iban);
+            } catch (Exception e) {
+                System.out.println("L'IBAN no existeix");
+            }
+            System.out.println("Quants diners vols traspassar?");
+            try {
+                minD = lectura.nextDouble();
+            } catch (Exception e) {
+                System.out.print("Recorda que el número és amb decimals amb un punt\n");
+            }
+            ((PlaPensions)compteClient).traspas(compteClientDestinatari, minD);
+        }else {
+            System.out.println("Des d'aquest compte no es poden fer traspassos\n");
+        }
+    }
