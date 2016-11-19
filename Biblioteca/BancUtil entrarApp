@@ -1,0 +1,39 @@
+    /**
+     * Mètode entrarApp. Ens permet demanar les dades a l'usuari corresponents al seu NIF/CIF i al seu password. 
+     * Comprovarem amb la crida del mètode existeixClient que el NIF/CIF introduït correspo a un client, i si es així, 
+     * obtindrem la seva posició en l'ArrayList de clients mitjançant la crida del mètode posicioClient per tal 
+     * d'obtenir el password del client. D'aquesta manera, podem veure si el password que acaba d'introduir l'usuari és
+     * el mateix que el que s'havia guardat en la seva posició de l'ArrayList clients.
+     * Un cop s'ha realitzat amb èxit la comprovació, igualem la variable client amb les dades del client guardades
+     * en l'ArrayList de clients per poder maniobrar amb més facilitat a partir d'ara en endavant en el menú de 
+     * l'Aplicació. 
+     * @return true si l'usuari ha pogut entrar en l'Aplicació, o false sino ha pogut entrar o bé no hi ha dades
+     * de clients en l'ArrayList de clients.
+     */
+    public static boolean entrarApp(){
+        if(!clients.isEmpty()){
+            try{
+                System.out.println("Entrar a l'aplicació.\nIntrodueixi el seu NIF/CIF: ");
+                nif=lectura.next();
+                System.out.println("Introdueixi la paraula de pas: ");
+                //Console cnsl = System.console();
+                //char[] pwd = cnsl.readPassword();
+                //passwordl= Integer.parseInt(new String(pwd));
+                passwordl=lectura.nextInt();
+            }catch(Exception e){
+                System.out.println("Has introduït malament les dades");
+            }
+            if(existeixClient(clients,nif)){
+                if((clients.get(posicioClient(clients,nif)).password)==(passwordl)){
+                    client=clients.get(posicioClient(clients,nif));
+                    System.out.println(client.getClass().getSimpleName());
+                    //ennumerarComptesClient();
+                    return true;
+                }
+            }
+            return false;
+        }else{
+            System.out.println("No es pot entrar a l'Aplicació. En aquests moments no hi ha dades de clients");
+            return false;
+        }
+    }
