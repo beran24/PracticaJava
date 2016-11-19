@@ -1,0 +1,29 @@
+    /**
+     *
+     * Mètode existeixCompte. Aquest mètode rep per paràmetre l'ArrayList de Comptes Bancaris,el IBAN del compte
+     * que sol·licitem al Client, i el NIF/CIF del client, per comprobar que existeix el compte bancari amb aquest IBAN
+     * i que correspon a un Client determinat, sigui Particular o Empresa.
+     * @param comptes
+     * @param iban
+     * @param nif
+     * @return true si el compte bancari existeix i correspon a un Particular o Empresa, o false sino correspon a cap
+     * Client
+     */
+    public static boolean existeixCompte(ArrayList<CompteBancari> comptes,String iban,String nif){
+        for(CompteBancari compte: comptes){
+            if(compte.iban.equals(iban)){
+                if(compte.propietari.getClass().equals(Particular.class)){
+                    if(((Particular)compte.propietari).nif.equals(nif)){
+                        return true;
+                    }
+                }
+                if(compte.propietari.getClass().equals(Empresa.class)){
+                    if(((Empresa)compte.propietari).cif.equals(nif)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
