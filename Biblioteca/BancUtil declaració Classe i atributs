@@ -1,0 +1,53 @@
+//package practicajavabanc;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+import java.io.*;
+/**
+ * @author Esteve Cabrera,Carlos Rodero,Mario Recamales
+ */
+public final class BancUtil {
+    /**
+     * Classe Utility BancUtil. En aquesta classe implementarem la majoria de mètodes que farà servir un client del banc
+     * amb els seus comptes bancaris i targetes.
+     * Atributs de la classe BancUtil:
+     *static boolean flag;
+     * static double minDiners=10000;
+     * static double minD;
+     * static String iban;
+     * static int posicioCompte;
+     * static int opcio;
+     * static int counter1,counter2;
+     * static String nom;
+     * static int pass;
+     * static int edat;
+     * static int passwordl;
+     * static CompteBancari compteClient;
+     * static CompteBancari compteClientDestinatari;
+     * static Client client;
+     * static String nif;
+     * static ArrayList<Client> clients= new ArrayList<>();
+     * static ArrayList<CompteBancari> comptesClient=new ArrayList<>();
+     * static ArrayList<CompteBancari> comptes= new ArrayList<>();
+     * static Scanner lectura=new Scanner(System.in);
+     */
+    static boolean flag;
+    static double minDiners=10000;
+    static double minD;
+    static String iban;
+    static int posicioCompte;
+    static int opcio;
+    static int counter1,counter2;
+    static String nom;
+    static int pass;
+    static int edat;
+    static int passwordl;
+    static CompteBancari compteClient;
+    static CompteBancari compteClientDestinatari;
+    static Client client;
+    static String nif;
+    static ArrayList<Client> clients= new ArrayList<>();
+    static ArrayList<CompteBancari> comptesClient=new ArrayList<>();
+    static ArrayList<CompteBancari> comptes= new ArrayList<>();
+    static Scanner lectura=new Scanner(System.in);
+    /**
