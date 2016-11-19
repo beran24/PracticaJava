@@ -1,0 +1,23 @@
+/**
+     * Mètode existeixClient. Aquest mètode rep per paràmetre l'ArrayList de Clients i el NIF/CIF del client,
+     * per comprobar que existeix el client amb el corresponent NIF o CIF.
+     * @param clients
+     * @param nif
+     * @return true si el Client(Particular o Empresa) existeix dins de l'ArrayList de Clients, o false sino existeix.
+     *
+     */
+    public static boolean existeixClient(ArrayList<Client> clients,String nif){
+        for(Client persona: clients){
+            if(persona.getClass().equals(Particular.class)){
+                if(((Particular)persona).nif.equals(nif)){
+                    return true;
+                }
+            }
+            if(persona.getClass().equals(Empresa.class)){
+                if(((Empresa)persona).cif.equals(nif)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
