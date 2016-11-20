@@ -1,0 +1,41 @@
+    /**
+     * Mètode triarCompteClient. Ens permet comprovar dins de l'ArrayList de comptes (de tipus CompteBancari) si 
+     * el compte és de la classe Particular i el client correspon a la classe Particular; si és així comprovarem si 
+     * el nif del compte propietari és igual al del client mitjançant el mètode compareTo definit a Particular (permet
+     * comparar el NIF dels objectes). Un cop ha passat aquestes comprovacions, mostra per pantalla cadascun dels 
+     * comptes bancaris, amb un índex que és un comptador iniciat a 0, i es va sumant internament en aquest comptador +1
+     * per cada compte bancari que apareix. A més a més, s'afegeix en una ArrayList comptesClient cadascun dels comptes 
+     * associats al client Particular. A continuació es demana per pantalla que s'introdueixi el compte a triar segons 
+     * el número d'índex que se li ha assignat al principi al compte bancari.
+     * Farà el procediment idèntic si es tracta d'un compte bancari d'un client Empresa.
+     */
+    public static void triarCompteClient(){
+        counter1=0;
+        comptesClient.clear();
+        if(!comptes.isEmpty()){
+            for(CompteBancari compte: comptes){
+                if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
+                    if(((Particular)compte.propietari).compareTo(client)==0){
+                        System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
+                        comptesClient.add(compte);
+                        counter1++;
+                    }
+                }
+                if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
+                    if(((Empresa)compte.propietari).compareTo(client)==0){
+                        System.out.println(counter1+" Compte "+compte.getClass().getSimpleName()+" IBAN "+compte.getIban());
+                        comptesClient.add(compte);
+                        counter1++;
+                    }
+                }
+            }
+            try{
+                posicioCompte=lectura.nextInt();
+            }catch(Exception e){
+                System.out.println("Indica un número de compte vàlid");
+            }
+            compteClient=comptesClient.get(posicioCompte);
+        }else{
+            System.out.println("No has creat cap compte bancari.");
+        }
+    }
