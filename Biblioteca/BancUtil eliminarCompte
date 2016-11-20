@@ -1,0 +1,16 @@
+    /**
+     * Mètode eliminarCompte. Ens permet eliminar el compte bancari que apareix per pantalla. Es crida al
+     * mètode triarCompteClient, i a continuació s'elimina el compte bancari de l'ArrayList comptes coincident amb el 
+     * de la variable compteClient. Apareix un missatge per pantalla per indicar-nos que el compte ha estat eliminat.
+     */
+    public static void eliminarCompte(){
+        System.out.print("Tria el compte que vols eliminar\n");
+        try{
+            triarCompteClient();
+            if(comptes.remove(compteClient)){
+                System.out.print("El compte ha estat eliminat\n");
+            }
+        }catch(Exception e){
+            System.out.print("No has seleccionat bé el compte bancari\n");
+        }
+    }
