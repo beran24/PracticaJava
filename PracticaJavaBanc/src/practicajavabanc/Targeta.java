@@ -32,7 +32,7 @@ public class Targeta implements Comparable<Targeta>{
      */
     public Targeta(CompteBancari compte ){
         Random randomGenerator = new Random();
-        this.numeroTarjeta=(((randomGenerator.nextInt(8)+1)*1000)+abs(randomGenerator.nextLong())%999)*10000*10000*10000+(abs(randomGenerator.nextLong())%(10000*10000));
+        this.numeroTarjeta=(((randomGenerator.nextInt(8)+1)*1000)+abs(randomGenerator.nextLong())%999)*10000*10000*10000+((abs(randomGenerator.nextLong())%9999)*10000*10000)+((abs(randomGenerator.nextLong())%99999999));
         dataCaducitat=new Date();
         dataCaducitat= new Date(dataCaducitat.getTime()+ (31536*1000*1000));
         this.pin=((randomGenerator.nextInt(8)+1)*1000)+((randomGenerator.nextInt(9))*100)+((randomGenerator.nextInt(9))*10)+(randomGenerator.nextInt(9));
