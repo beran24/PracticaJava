@@ -1,0 +1,21 @@
+    /**
+     * Mètode ennumerarComptesClient. Ens permet accedir al ArrayList de comptes (de tipus CompteBancari) i si el compte
+     * a comprovar és de la classe Particular i el client correspon a la classe Particular, aleshores comprovarem si
+     * el nif del compte propietari és igual al del client. Si és així, ens mostrarà per pantalla els comptes bancaris 
+     * associats al client. Si el compte a comprovar és de la classe Empresa també farà les mateixes comprovacions i 
+     * mostrarà per pantalla la mateixa informació, si el compte està associat al client.
+     */
+    public static void ennumerarComptesClient(){
+        for(CompteBancari compte: comptes){
+            if(compte.propietari.getClass().equals(Particular.class)&&client.getClass().equals(Particular.class)){
+                if(((Particular)compte.propietari).compareTo(client)==0){
+                    System.out.println("Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
+                }
+            }
+            if(compte.propietari.getClass().equals(Empresa.class)&&client.getClass().equals(Empresa.class)){
+                if(((Empresa)compte.propietari).compareTo(client)==0){
+                    System.out.println("Compte "+compte.getClass().getSimpleName()+" IBAN " + compte.getIban());
+                }
+            }
+        }
+    }
