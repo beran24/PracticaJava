@@ -1,34 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package practicajavabanc;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//package practicajavabanc;
 /**
- *
  * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
  */
 public class PracticaJavaBanc {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        
+
         int opcio=0;
         int opcio2=0;
 
         while (true) {
-            System.out.println("Benvinguda al Portal JavaBank\n\nEscull una opció:\n1.- Crear client\n2.- Entrar a l'aplicació");
+            System.out.println("Benvinguda al Portal JavaBank\n\nEscull una opció:\n1.- Crear client\n" +
+                    "2.- Entrar a l'aplicació\n3.- Activar ");
             Scanner scan = new Scanner(System.in);
             try{
-            opcio = scan.nextInt();
+                opcio = scan.nextInt();
             }catch(Exception e){
-                System.out.println("Posa un numero siusplau");
+                System.out.println("Escull una de les opcions, siusplau");
             }
             switch (opcio) {
                 case 1:
@@ -40,11 +30,14 @@ public class PracticaJavaBanc {
                         while(opcio2!=9){
                             System.out.println("_______________________________________________");
                             BancUtil.ennumerarComptesClient();
-                            System.out.println("Escull la operació que vulguis fer: \n1.- Crear compte\n2.- Fer ingres\n3.- Retirar efectiu\n4.- Consulta saldo\n5.- Fer traspas\n6.- Solicitar trajeta\n7.- Eliminar Compte\n8.- Comprovar interesos\n9.- Enrere\n");
+                            System.out.println("Escull la operació que vulguis fer: \n1.- Crear compte bancari\n" +
+                                    "2.- Fer un ingrés\n3.- Retirar efectiu\n4.- Consultar saldo\n5.- Fer un traspàs\n" +
+                                    "6.- Sol·licitar targeta\n7.- Eliminar compte bancari\n8.- Comprovar interessos\n" +
+                                    "9.- Enrere\n");
                             try{
-                            opcio2 = scan.nextInt();
+                                opcio2 = scan.nextInt();
                             }catch(Exception e){
-                                System.out.println("No es una opcio, torna a triar");
+                                System.out.println("Escull una de les opcions, siusplau");
                             }
                             switch (opcio2){
                                 case 1:
@@ -61,7 +54,7 @@ public class PracticaJavaBanc {
                                     break;
                                 case 5:
                                     BancUtil.ferTraspas();
-                                    break;   
+                                    break;
                                 case 6:
                                     BancUtil.solicitarTargeta();
                                     break;
@@ -70,7 +63,7 @@ public class PracticaJavaBanc {
                                     break;
                                 case 8:
                                     BancUtil.comprovarInteressos();
-                                    break;    
+                                    break;
                                 case 9:
                                     opcio2=9;
                                     break;
@@ -83,6 +76,9 @@ public class PracticaJavaBanc {
                         break;
                     }
                     break;
+                /*case 3:
+                    BancUtil.afegirClientComptes();
+                    break;*/
                 default:
                     System.out.println("La opció escollida és incorrecte. Torna a introduir una opció.\n");
 
@@ -91,5 +87,5 @@ public class PracticaJavaBanc {
 
 
     }
-    
+
 }

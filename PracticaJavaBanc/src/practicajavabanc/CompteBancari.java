@@ -1,4 +1,9 @@
 //package practicajavabanc;
+
+import java.util.Random;
+
+import static java.lang.StrictMath.abs;
+
 /**
  * @author Carlos Rodero, Esteve Cabrera, Mario Recamales
  */
@@ -72,7 +77,6 @@ public abstract class CompteBancari implements CompteAccions {
      * @param importe
      */
     @Override
-    public void ingressarDiners(double importe){
-        saldo=saldo+importe;  
-    }
+    public abstract void ingressarDiners(double importe);
+
 }
