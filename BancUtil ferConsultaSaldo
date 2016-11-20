@@ -1,0 +1,14 @@
+    /**
+     * Mètode ferConsultaSaldo. Ens permet consultar el saldo del compte bancari que apareix per pantalla. Es crida al 
+     * mètode triarCompteClient, i a continuació es mostra el saldo del compte del client tot cridant el mètode 
+     * consultarSaldo desde la variable compteClient.
+     */
+    public static void ferConsultaSaldo(){
+        System.out.print("Tria el compte que vols consultar el saldo\n");
+        try{
+            triarCompteClient();
+            System.out.println("Saldo: "+String.format("%.2f", compteClient.consultarSaldo()));
+        }catch(Exception e){
+            System.out.print("No has seleccionat el compte be\n");
+        }
+    }
