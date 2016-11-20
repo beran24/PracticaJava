@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Random;
 
 
-public class Targeta {
+public class Targeta implements Comparable<Targeta>{
     protected long numeroTarjeta;
     protected Date dataCaducitat;
     protected int cvc;
@@ -44,5 +44,10 @@ public class Targeta {
     }
     public void setPin(int pin){
         this.pin = pin;
+    }
+
+    @Override
+    public int compareTo(Targeta o) {
+        return dataCaducitat.compareTo(o.dataCaducitat);
     }
 }

@@ -34,6 +34,7 @@ public final class BancUtil {
      * static ArrayList<CompteBancari> comptesClient=new ArrayList<>();
      * static ArrayList<CompteBancari> comptes= new ArrayList<>();
      * static Scanner lectura=new Scanner(System.in);
+     * private static ArrayList<Targeta> targetes= new ArrayList<>();
      */
     private static boolean flag;
     private static double minDiners=10000;
@@ -54,6 +55,7 @@ public final class BancUtil {
     private static ArrayList<CompteBancari> comptesClient=new ArrayList<>();
     private static ArrayList<CompteBancari> comptes= new ArrayList<>();
     private static Scanner lectura=new Scanner(System.in);
+    private static ArrayList<Targeta> targetes= new ArrayList<>();
     /**
      * Mètode existeixCompte. Aquest mètode rep per paràmetre l'ArrayList de comptes (de tipus CompteBancari) i el IBAN
      * del compte que sol·licitem al Client per comprobar que existeix.
@@ -588,6 +590,9 @@ public final class BancUtil {
 
     }
     public static void solicitarTargeta(){
+        System.out.print("Tria el compte en el que vols associar la targeta:");
+        triarCompteClient();
+        targetes.add(new Targeta(compteClient));
 
     }
     public static void comprovarInteressos(){
@@ -605,18 +610,36 @@ public final class BancUtil {
         }
     }
 
-    public static void afegirClientComptes(){
-        if(clients.isEmpty()){
-            clients.add(new Particular("Esteve",29,1234,"43559526X"));
-            clients.add(new Particular("Mario",20,1234,"3455216Y"));
-            clients.add(new Particular("Carlos",31,1234,"2324526P"));
-            clients.add(new Empresa("Zara",29,1234,"23986456T"));
-            if(comptes.isEmpty()){
-                comptes.add(new Diposit("ES1533331111430010090101",50000,clients.get(0)));
-                comptes.add(new Nomina("ES1533331111430010090105",50000,clients.get(0)));
-                comptes.add(new Nomina("ES6633331111480010090102",25000,clients.get(1)));
-                comptes.add(new PlaPensions("ES2333331111420010090103",10000,clients.get(2)));
-                comptes.add(new Nomina("ES7433331111470010090104",99000,clients.get(3)));
+    public static void afegirClientComptes() {
+        if (clients.isEmpty()) {
+            clients.add(new Particular("Esteve", 29, 1234, "43559526X"));
+            clients.add(new Particular("Mario", 20, 1234, "3455216Y"));
+            clients.add(new Particular("Carlos", 31, 1234, "2324526P"));
+            clients.add(new Empresa("Zara", 29, 1234, "23986456T"));
+            if (comptes.isEmpty()) {
+                comptes.add(new Diposit("ES1533331111430010090101", 50000, clients.get(0)));
+                comptes.add(new Nomina("ES1533331111430010090105", 50000, clients.get(0)));
+                comptes.add(new Nomina("ES6633331111480010090102", 25000, clients.get(1)));
+                comptes.add(new PlaPensions("ES2333331111420010090103", 10000, clients.get(2)));
+                comptes.add(new Nomina("ES7433331111470010090104", 99000, clients.get(3)));
+            }
+            if (targetes.isEmpty()) {
+                targetes.add(new Targeta(comptes.get(0)));
+                targetes.add(new Targeta(comptes.get(3)));
+                targetes.add(new Targeta(comptes.get(1)));
+                targetes.add(new Targeta(comptes.get(2)));
+                System.out.println(targetes.get(1).cvc);
+                System.out.println(targetes.get(0).cvc);
+                System.out.println(targetes.get(2).cvc);
+                System.out.println(targetes.get(3).cvc);
+                System.out.println(targetes.get(1).numeroTarjeta);
+                System.out.println(targetes.get(0).numeroTarjeta);
+                System.out.println(targetes.get(2).numeroTarjeta);
+                System.out.println(targetes.get(3).numeroTarjeta);
+                System.out.println(targetes.get(1).dataCaducitat);
+                System.out.println(targetes.get(0).dataCaducitat);
+                System.out.println(targetes.get(2).dataCaducitat);
+                System.out.println(targetes.get(3).dataCaducitat);
             }
         }
     }

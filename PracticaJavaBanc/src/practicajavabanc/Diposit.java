@@ -73,6 +73,15 @@ public class Diposit extends CompteBancari implements TreureDinersAccions{
     }
 
     /**
+     * Mètode ingressarDiners. Augmenta el saldo del compte Nomina en la quantitat indicada de l'ingrés.
+     * Amb Override perquè estem sobreescribint aquest mètode.
+     * @param importe
+     */
+    @Override
+    public void ingressarDiners(double importe){
+        saldo=saldo+importe;
+    }
+    /**
      * Mètode treureDiners. Disminuïm el saldo del compte Dipòsit en la quantitat indicada.
      * Si en treure diners el saldo queda negatiu no ens permet fer la operació.
      * @param importe

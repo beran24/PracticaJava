@@ -63,14 +63,13 @@ public class Nomina extends CompteBancari implements TreureDinersAccions {
     }
 
     /**
-     * Mètode ingressarDiners. Augmenta el saldo del compte Nomina en la quantitat indicada de l'ingrés, i s'afegeixen
-     * els tipus d'interés especificats cada vegada que es faci un ingrés.
-     * Amb Override perquè estem sobreescribint aquest mètode. Ara afegim al saldo el tipus d'interés que li pertoca.
+     * Mètode ingressarDiners. Augmenta el saldo del compte Nomina en la quantitat indicada de l'ingrés.
+     * Amb Override perquè estem sobreescribint aquest mètode.
      * @param importe
      */
     @Override
     public void ingressarDiners(double importe){
-        saldo=saldo+importe+(importe*tipusInteres/100);  
+        saldo=saldo+importe;
     }
 
     /**
