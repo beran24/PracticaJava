@@ -1,0 +1,17 @@
+    /**
+     * Mètode ferIngres. Ens permet fer una consulta per pantalla per seleccionar en quin compte bancari farem l'ingrés.
+     * Fa una crida al mètode triarCompteClient, i un cop hem seleccionat el compte del client, ens demana els diners
+     * a ingressar. A continuació, es crida al mètode ingressarDiners, desde la variable compteClient, amb l'import 
+     * desitjat passat com a paràmetre.
+     */
+    public static void ferIngres(){
+        System.out.print("Tria el compte on vols fer l'ingrés\n");
+        try{
+            triarCompteClient();
+            System.out.println("Quants diners vols ingressar?");
+            minD=lectura.nextDouble();
+            compteClient.ingressarDiners(minD);
+        }catch(Exception e){
+            System.out.print("No has seleccionat correctament el compte bancari\n");
+        }
+    }
