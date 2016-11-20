@@ -1,0 +1,17 @@
+    /**
+     * Mètode triarCompteClient. Ens permet comprovar dins de l'ArrayList de comptes (de tipus CompteBancari) si el IBAN
+     * que li passem com a paràmetre és igual amb algun IBAN dels comptes de l'ArrayList de comptes. Si es així, apareix
+     * en pantalla junt amb un índex que hem creat com a comptador per tal que pugui escollir per pantalla fàcilment el
+     * número de compte.
+     * @param iban
+     */
+    public static void triarCompteClient(String iban){
+        counter2=0;
+        for(CompteBancari compte: comptes){
+            if(compte.iban.equals(iban)){
+                compteClientDestinatari=comptes.get(counter2);
+                System.out.println(counter2+" Compte "+compte.getClass().getSimpleName()+" IBAN "+ compte.getIban());
+            }
+            counter2++;
+        }
+    }
