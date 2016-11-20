@@ -1,0 +1,98 @@
+    /**
+     * Mètode crearCompte. Ens permet crear un compte bancari de tipus Nòmina, Dipòsit, Pla de Pensions o Vivenda si és
+     * un client Particular, o bé de tipus Nòmina o Dipòsit si és un client Empresa. Fem una marca per saber si estem
+     * amb un client Particular o Empresa, d'aquesta manera només podrà crear els tipus de compte bancari que li 
+     * hem preguntat. Es genera aleshores un IBAN aleatori segons el tipus de compte que hagi escollit l'usuari. 
+     * Comprovarà si el compte ja existeix amb el mètode existeixCompte, i sino existeix l'afegeix en l'ArrayList 
+     * de comptes. En el cas del compte bancari Dipòsit, demanem a l'usuari la quantitat a dipositar (que ha de ser 
+     * superior a la variable minDiners = 10000).
+     */
+    public static void crearCompte(){
+        if(client.getClass().equals(Particular.class)){
+            System.out.println("1.- Nòmina\n2.- Dipòsit\n3.- Pla de pensions\n4.- Vivenda\n");
+            flag=true;
+        }
+        if(client.getClass().equals(Empresa.class)){
+            System.out.println("1.- Nòmina\n2.- Dipòsit\n");
+            flag=false;
+        }
+        try{
+            opcio=lectura.nextInt();
+        }catch(Exception e){
+            System.out.println("Torni a introduir la contrassenya");
+        }
+        switch(opcio){
+            case 1:
+                System.out.println("Generant el nou número IBAN d'aquest compte: ");
+                Random randomGenerator = new Random();
+                do {
+                    int numero1 = randomGenerator.nextInt(999);
+                    int numero2 = randomGenerator.nextInt(999999999);
+                    iban = "ES2120130733" + numero1 + numero2;
+                }while(existeixCompte(comptes,iban));
+                System.out.println("El número de compte és: " +iban);
+                //iban=lectura.next();
+                if(flag){
+                    if(!(existeixCompte(comptes,iban))){
+                        comptes.add(new Nomina(iban,0,client));
+                    }else{
+                        System.out.println("El compte bancari ja existeix");
+                    }
+                }
+                if(!flag){
+                    if(!(existeixCompte(comptes,iban))){
+                        comptes.add(new Nomina(iban,0,client));
+                    }else{
+                        System.out.println("El compte bancari ja existeix");
+                    }
+
+                }
+                break;
+            case 2:
+                System.out.println("Posa el iban");
+                iban=lectura.next();
+                System.out.println("Posa la quantitat a dipositar");
+                try{
+                    minD=lectura.nextDouble();
+                }catch(Exception e){
+                    System.out.println("Has de posar la quantitat de diners amb decimals");
+                }
+                if(minD>minDiners){
+                    if(flag){
+                        if(!(existeixCompte(comptes,iban))){
+                            comptes.add(new Diposit(iban,minD,client));
+                        }else{
+                            System.out.println("El compte bancari ja existeix");
+                        }
+                    }
+                    if(!flag){
+                        if(!(existeixCompte(comptes,iban))){
+                            comptes.add(new Diposit(iban,minD,client));
+                        }else{
+                            System.out.println("El compte bancari ja existeix");
+                        }
+
+                    }
+                }else{
+                    System.out.println("El minim de diners han de ser 10000 euros");
+                }
+                break;
+            case 3:
+                System.out.println("Posa el iban");
+                iban=lectura.next();
+                if(!(existeixCompte(comptes,iban,((Particular)client).nif))){
+                    comptes.add(new PlaPensions(iban,0,client));
+                }else{
+                    System.out.println("El compte bancari ja existeix");
+                }
+                break;
+            case 4:
+                System.out.println("Posa el iban");
+                iban=lectura.next();
+                if(!(existeixCompte(comptes,iban,((Particular)client).nif))){
+                    comptes.add(new Vivenda(iban,0,client));
+                }else{
+                    System.out.println("El compte bancari ja existeix");
+                }
+        }
+    }
